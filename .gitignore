@@ -1,0 +1,6 @@
+# NODE_MODULES
+node_modules
+
+# PACKAGE.JSON
+package-lock.json
+package.json

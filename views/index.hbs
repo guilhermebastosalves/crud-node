@@ -1,0 +1,23 @@
+<div class="container">
+    <nav class="bg-body-tertiary p-5 rounded mt-3">
+        <h1>Cadastrar</h1>
+        {{>msg}}
+        <form action="/cad" method="post">
+            <div class="row mt-5">
+                <div class="col-md-5 mb-3">
+                    <label for="nome" class="form-label">Nome</label>
+                    <input type="text" class="form-control" id="nome" name="nome" placeholder="Digite seu nome"
+                        value="{{#if errorMessage}}{{nome}}{{/if}}">
+                </div>
+                <div class="col-md-5 mb-3">
+                    <label for="email" class="form-label">Email address</label>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="Digite seu email"
+                        value="{{#if errorMessage}}{{email}}{{/if}}">
+                </div>
+                <div class="col-md-2">
+                    <button class="btn btn-success w-100 mt-3 p-3">Enviar</button>
+                </div>
+            </div>
+        </form>
+    </nav>
+</div>

@@ -1,0 +1,70 @@
+<div class="container">
+    <nav class="p-5 mt-3">
+        {{#if table}}
+        <h1>Usuários Cadastrados</h1>
+        <table class="table table-striped mt-5">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each valores}}
+                <tr>
+                    <th scope="row">{{id}}</th>
+                    <td>{{nome}}</td>
+                    <td>{{email}}</td>
+                    <td class="" style="width:50%">
+                        <div class="row">
+                            <div class="col-sm-6 " style="">
+                                <form action="/edit" method="post">
+                                    <input type="hidden" name="id" value="{{id}}">
+                                    <button class="btn btn-info w-75">Editar</button>
+                                </form>
+                            </div>
+                            <div class="col-sm-6" style="">
+                                <button class="btn btn-danger w-75" data-bs-toggle="modal"
+                                    data-bs-target="#modalId_{{id}}">Deletar</button>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <!-- Modal -->
+                <div class="modal fade" id="modalId_{{id}}" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">Aviso</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                Tem certeza que deseja deletar o usuário <a href="#"
+                                    class="fw-bold link-dark link-underline-opacity-0">{{nome}}</a>?
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Voltar</button>
+                                <form action="/del" method="post">
+                                    <input type="hidden" name="id" value="{{id}}">
+                                    <button type="submit" class="btn btn-primary">Confirmar</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {{/each}}
+            </tbody>
+        </table>
+        {{else}}
+        <div class="card mt-2">
+            <div class="card-body">
+                Nenhum usuário encontrado!
+            </div>
+        </div>
+        {{/if}}
+    </nav>
+</div>
